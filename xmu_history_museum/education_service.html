@@ -1,0 +1,754 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教育与服务 - 厦门大学线上校史馆</title>
+  <style>
+    /* 公共样式与首页相同 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+    
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #b81c22 0%, #8a0e13 100%);
+      color: white;
+      padding: 15px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .logo img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: white;
+      padding: 5px;
+    }
+    
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    
+    nav a:hover, nav a.active {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    
+    .section-title h1 {
+      color: #b81c22;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    
+    .section-title p {
+      color: #666;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #b81c22;
+      border-radius: 2px;
+    }
+    
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    
+    .service-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .service-img {
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .service-content {
+      padding: 30px;
+    }
+    
+    .service-content h2 {
+      color: #b81c22;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    
+    .service-content p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+    
+    .service-btn {
+      display: inline-block;
+      background: #b81c22;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    
+    .service-btn:hover {
+      background: #8a0e13;
+    }
+    
+    .course-section {
+      background: white;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 60px;
+    }
+    
+    .course-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .course-header h2 {
+      color: #b81c22;
+      margin-bottom: 15px;
+    }
+    
+    .course-filter {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+      background: #f0f0f0;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .filter-btn.active, .filter-btn:hover {
+      background: #b81c22;
+      color: white;
+    }
+    
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .course-card {
+      background: #f9f9f9;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .course-img {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .course-content {
+      padding: 20px;
+    }
+    
+    .course-content h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    .course-meta {
+      display: flex;
+      justify-content: space-between;
+      color: #666;
+      font-size: 0.9rem;
+      margin: 15px 0;
+    }
+    
+    .course-desc {
+      color: #666;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+    
+    .course-link {
+      display: inline-block;
+      color: #b81c22;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .alumni-section {
+      background: white;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 60px;
+    }
+    
+    .alumni-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .alumni-header h2 {
+      color: #b81c22;
+      margin-bottom: 15px;
+    }
+    
+    .alumni-search {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      display: flex;
+    }
+    
+    .alumni-search input {
+      flex: 1;
+      padding: 12px 20px;
+      border: 2px solid #e0e0e0;
+      border-radius: 50px 0 0 50px;
+      font-size: 1rem;
+      outline: none;
+    }
+    
+    .alumni-search button {
+      background: #b81c22;
+      color: white;
+      border: none;
+      padding: 0 30px;
+      border-radius: 0 50px 50px 0;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    
+    .alumni-search button:hover {
+      background: #8a0e13;
+    }
+    
+    .alumni-results {
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 30px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .alumni-placeholder {
+      text-align: center;
+      color: #999;
+    }
+    
+    .alumni-placeholder h3 {
+      margin-bottom: 15px;
+      color: #b81c22;
+    }
+    
+    .donation-section {
+      background: white;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    
+    .donation-header {
+      margin-bottom: 30px;
+    }
+    
+    .donation-header h2 {
+      color: #b81c22;
+      margin-bottom: 15px;
+    }
+    
+    .donation-options {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    
+    .donation-option {
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 30px;
+      width: 250px;
+      transition: transform 0.3s;
+    }
+    
+    .donation-option:hover {
+      transform: translateY(-5px);
+    }
+    
+    .donation-option h3 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    .donation-amount {
+      font-size: 2rem;
+      color: #b81c22;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    
+    .donation-btn {
+      display: inline-block;
+      background: #b81c22;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    
+    .donation-btn:hover {
+      background: #8a0e13;
+    }
+    
+    .donation-custom {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 30px;
+      background: #f9f9f9;
+      border-radius: 10px;
+    }
+    
+    .donation-custom h3 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    .custom-input {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    
+    .custom-input span {
+      background: #e0e0e0;
+      padding: 12px 15px;
+      border-radius: 5px 0 0 5px;
+    }
+    
+    .custom-input input {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #e0e0e0;
+      border-left: none;
+      border-right: none;
+      outline: none;
+    }
+    
+    .custom-input div {
+      background: #e0e0e0;
+      padding: 12px 15px;
+      border-radius: 0 5px 5px 0;
+    }
+    
+    footer {
+      background: #333;
+      color: #ddd;
+      padding: 50px 0 20px;
+      margin-top: 60px;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+    
+    .footer-section h3 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    
+    .footer-section p {
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: #b81c22;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      margin-top: 30px;
+      border-top: 1px solid #444;
+      color: #999;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .donation-options {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <img src="resources/pictures/school_badge.png" alt="厦门大学校徽">
+        <h1>厦门大学线上校史馆</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="virtual_exhibition.html">虚拟展厅</a></li>
+          <li><a href="timeline.html">时间轴叙事</a></li>
+          <li><a href="people_stories.html">人物与故事</a></li>
+          <li><a href="interactive.html">互动体验</a></li>
+          <li><a href="education_service.html" class="active">教育服务</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="section-title">
+      <h1>教育与服务</h1>
+      <p>提供校史教育资源与校友服务，传承厦大精神，服务广大师生校友</p>
+    </div>
+    
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-img" style="background-image: url('https://via.placeholder.com/600x400?text=校史课堂')"></div>
+        <div class="service-content">
+          <h2>校史课堂</h2>
+          <p>开设在线校史课程与微视频，支持教师定制思政教育专题，打造思政示范课程。</p>
+          <a href="#" class="service-btn">进入课堂</a>
+        </div>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-img" style="background-image: url('https://via.placeholder.com/600x400?text=校友服务')"></div>
+        <div class="service-content">
+          <h2>校友服务</h2>
+          <p>提供校友信息查询、班级信息、老照片征集等服务，帮助校友重温校园记忆。</p>
+          <a href="#" class="service-btn">校友登录</a>
+        </div>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-img" style="background-image: url('https://via.placeholder.com/600x400?text=资源征集')"></div>
+        <div class="service-content">
+          <h2>校史资源征集</h2>
+          <p>征集校史文物、老照片、文献资料等，共同丰富厦大历史记忆库。</p>
+          <a href="#" class="service-btn">我要捐赠</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="course-section">
+      <div class="course-header">
+        <h2>校史课堂</h2>
+        <p>精选校史课程资源，助力思政教育与校史研究</p>
+      </div>
+      
+      <div class="course-filter">
+        <button class="filter-btn active">全部课程</button>
+        <button class="filter-btn">思政专题</button>
+        <button class="filter-btn">历史纪录片</button>
+        <button class="filter-btn">校友讲座</button>
+        <button class="filter-btn">微视频</button>
+      </div>
+      
+      <div class="course-grid">
+        <div class="course-card">
+          <div class="course-img" style="background-image: url('https://via.placeholder.com/600x400?text=陈嘉庚与厦大')"></div>
+          <div class="course-content">
+            <h3>陈嘉庚与厦大创校史</h3>
+            <div class="course-meta">
+              <span>时长: 45分钟</span>
+              <span>讲师: 王教授</span>
+            </div>
+            <p class="course-desc">讲述校主陈嘉庚先生倾资办学的感人事迹，展现厦大创校的艰辛历程。</p>
+            <a href="#" class="course-link">观看课程 →</a>
+          </div>
+        </div>
+        
+        <div class="course-card">
+          <div class="course-img" style="background-image: url('https://via.placeholder.com/600x400?text=长汀岁月')"></div>
+          <div class="course-content">
+            <h3>烽火中的厦大：长汀岁月</h3>
+            <div class="course-meta">
+              <span>时长: 38分钟</span>
+              <span>讲师: 李教授</span>
+            </div>
+            <p class="course-desc">回顾抗战时期厦大内迁长汀办学的历史，展现师生在艰苦条件下坚持办学的精神。</p>
+            <a href="#" class="course-link">观看课程 →</a>
+          </div>
+        </div>
+        
+        <div class="course-card">
+          <div class="course-img" style="background-image: url('https://via.placeholder.com/600x400?text=嘉庚精神')"></div>
+          <div class="course-content">
+            <h3>嘉庚精神与当代教育</h3>
+            <div class="course-meta">
+              <span>时长: 50分钟</span>
+              <span>讲师: 张教授</span>
+            </div>
+            <p class="course-desc">探讨嘉庚精神的时代价值及其对当代高等教育的启示。</p>
+            <a href="#" class="course-link">观看课程 →</a>
+          </div>
+        </div>
+        
+        <div class="course-card">
+          <div class="course-img" style="background-image: url('https://via.placeholder.com/600x400?text=建筑艺术')"></div>
+          <div class="course-content">
+            <h3>嘉庚建筑艺术赏析</h3>
+            <div class="course-meta">
+              <span>时长: 28分钟</span>
+              <span>类别: 微视频</span>
+            </div>
+            <p class="course-desc">赏析厦门大学嘉庚风格建筑的独特艺术价值与文化内涵。</p>
+            <a href="#" class="course-link">观看课程 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="alumni-section">
+      <div class="alumni-header">
+        <h2>校友服务</h2>
+        <p>查询校友信息，重温校园记忆</p>
+      </div>
+      
+      <div class="alumni-search">
+        <input type="text" placeholder="输入姓名、入学年份或专业查询校友信息">
+        <button>搜索</button>
+      </div>
+      
+      <div class="alumni-results">
+        <div class="alumni-placeholder">
+          <h3>校友信息查询</h3>
+          <p>在实际项目中，这里将展示校友搜索结果</p>
+          <p>可查询入学年份、班级信息、老照片等</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="donation-section">
+      <div class="donation-header">
+        <h2>支持校史馆建设</h2>
+        <p>您的捐赠将用于校史馆建设与校史研究</p>
+      </div>
+      
+      <div class="donation-options">
+        <div class="donation-option">
+          <h3>校史研究基金</h3>
+          <div class="donation-amount">¥100</div>
+          <a href="#" class="donation-btn">立即捐赠</a>
+        </div>
+        
+        <div class="donation-option">
+          <h3>文物征集基金</h3>
+          <div class="donation-amount">¥300</div>
+          <a href="#" class="donation-btn">立即捐赠</a>
+        </div>
+        
+        <div class="donation-option">
+          <h3>数字校史建设</h3>
+          <div class="donation-amount">¥500</div>
+          <a href="#" class="donation-btn">立即捐赠</a>
+        </div>
+      </div>
+      
+      <div class="donation-custom">
+        <h3>自定义捐赠金额</h3>
+        <div class="custom-input">
+          <span>¥</span>
+          <input type="number" placeholder="输入捐赠金额">
+          <div>.00</div>
+        </div>
+        <a href="#" class="donation-btn">确认捐赠</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>关于我们</h3>
+        <p>厦门大学线上校史馆是展示厦大百年辉煌历史的数字平台，通过现代技术手段传承和弘扬厦大精神。</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>快速链接</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">首页</a></li>
+          <li><a href="virtual_exhibition.html">虚拟展厅</a></li>
+          <li><a href="timeline.html">时间轴叙事</a></li>
+          <li><a href="people_stories.html">人物与故事</a></li>
+          <li><a href="interactive.html">互动体验</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>联系我们</h3>
+        <p>地址：福建省厦门市思明区思明南路422号</p>
+        <p>厦大总值班电话：0592-2186110</p>
+        <p>邮箱：history@xmu.edu.cn</p>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>© 2025 厦门大学线上校史馆 版权所有</p>
+    </div>
+  </footer>
+
+  <script>
+    // 课程筛选
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelector('.filter-btn.active').classList.remove('active');
+        this.classList.add('active');
+        alert(`筛选课程: ${this.textContent}\n在实际项目中，这里会加载对应的课程列表`);
+      });
+    });
+    
+    // 校友搜索
+    document.querySelector('.alumni-search button').addEventListener('click', function() {
+      const keyword = document.querySelector('.alumni-search input').value;
+      if (keyword) {
+        alert(`搜索校友: ${keyword}\n在实际项目中，这里会展示搜索结果`);
+      } else {
+        alert('请输入搜索关键词');
+      }
+    });
+    
+    // 捐赠按钮
+    document.querySelectorAll('.donation-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        let amount = '自定义金额';
+        const amountElement = this.closest('.donation-option')?.querySelector('.donation-amount');
+        if (amountElement) {
+          amount = amountElement.textContent;
+        }
+        alert(`捐赠金额: ${amount}\n在实际项目中，这里会跳转到支付页面`);
+      });
+    });
+  </script>
+</body>
+</html>

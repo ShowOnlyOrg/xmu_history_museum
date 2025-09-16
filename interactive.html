@@ -1,0 +1,746 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>互动体验 - 厦门大学线上校史馆</title>
+  <style>
+    /* 公共样式与首页相同 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+    
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #b81c22 0%, #8a0e13 100%);
+      color: white;
+      padding: 15px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .logo img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: white;
+      padding: 5px;
+    }
+    
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    
+    nav a:hover, nav a.active {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    
+    .section-title h1 {
+      color: #b81c22;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    
+    .section-title p {
+      color: #666;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #b81c22;
+      border-radius: 2px;
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .feature-img {
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    
+    .feature-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #b81c22;
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    
+    .feature-content {
+      padding: 30px;
+    }
+    
+    .feature-content h2 {
+      color: #b81c22;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    
+    .feature-content p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+    
+    .feature-btn {
+      display: inline-block;
+      background: #b81c22;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    
+    .feature-btn:hover {
+      background: #8a0e13;
+    }
+    
+    .ar-section {
+      background: white;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 60px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+    }
+    
+    .ar-content {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .ar-content h2 {
+      color: #b81c22;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+    
+    .ar-content p {
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+    
+    .ar-steps {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .ar-step {
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 10px;
+    }
+    
+    .ar-step-number {
+      width: 40px;
+      height: 40px;
+      background: #b81c22;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      font-weight: bold;
+    }
+    
+    .ar-step h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    .ar-step p {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+    
+    .ar-preview {
+      flex: 1;
+      min-width: 300px;
+      height: 400px;
+      background: #f0f0f0;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .ar-placeholder {
+      text-align: center;
+      color: #999;
+    }
+    
+    .ar-placeholder h3 {
+      margin-bottom: 15px;
+      color: #b81c22;
+    }
+    
+    .guide-section {
+      background: white;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 60px;
+    }
+    
+    .guide-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .guide-header h2 {
+      color: #b81c22;
+      margin-bottom: 15px;
+    }
+    
+    .guide-options {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .guide-option {
+      background: #f0f0f0;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    
+    .guide-option.active, .guide-option:hover {
+      background: #b81c22;
+      color: white;
+    }
+    
+    .guide-player {
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .player-controls {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .player-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #b81c22;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background 0.3s;
+    }
+    
+    .player-btn:hover {
+      background: #8a0e13;
+    }
+    
+    .nft-section {
+      background: white;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nft-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .nft-header h2 {
+      color: #b81c22;
+      margin-bottom: 15px;
+    }
+    
+    .nft-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    
+    .nft-card {
+      background: #f9f9f9;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+    
+    .nft-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .nft-img {
+      height: 250px;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: white;
+    }
+    
+    .nft-content {
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .nft-content h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    .nft-meta {
+      display: flex;
+      justify-content: space-between;
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 15px;
+    }
+    
+    .nft-btn {
+      display: inline-block;
+      background: #b81c22;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+      margin-top: 15px;
+    }
+    
+    .nft-btn:hover {
+      background: #8a0e13;
+    }
+    
+    footer {
+      background: #333;
+      color: #ddd;
+      padding: 50px 0 20px;
+      margin-top: 60px;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+    
+    .footer-section h3 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    
+    .footer-section p {
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: #b81c22;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      margin-top: 30px;
+      border-top: 1px solid #444;
+      color: #999;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .ar-section {
+        flex-direction: column;
+      }
+      
+      .guide-options {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <img src="resources/pictures/school_badge.png" alt="厦门大学校徽">
+        <h1>厦门大学线上校史馆</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="virtual_exhibition.html">虚拟展厅</a></li>
+          <li><a href="timeline.html">时间轴叙事</a></li>
+          <li><a href="people_stories.html">人物与故事</a></li>
+          <li><a href="interactive.html" class="active">互动体验</a></li>
+          <li><a href="education_service.html">教育服务</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="section-title">
+      <h1>互动体验</h1>
+      <p>通过创新技术手段，让校史"活"起来，增强参观体验的趣味性和参与感</p>
+    </div>
+    
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-img" style="background-image: url('https://via.placeholder.com/600x400?text=AR寻踪')">
+          <span class="feature-badge">新功能</span>
+        </div>
+        <div class="feature-content">
+          <h2>AR寻踪</h2>
+          <p>通过手机摄像头扫描校园地标，叠加历史影像与故事讲解，让历史与现实在眼前交汇。</p>
+          <a href="#" class="feature-btn">体验AR寻踪</a>
+        </div>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-img" style="background-image: url('https://via.placeholder.com/600x400?text=语音导览')">
+          <span class="feature-badge">热门</span>
+        </div>
+        <div class="feature-content">
+          <h2>语音导览</h2>
+          <p>提供AI智能导览与真人语音导览两种模式，满足不同参观需求，深入了解厦大历史。</p>
+          <a href="#" class="feature-btn">开始导览</a>
+        </div>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-img" style="background-image: url('https://via.placeholder.com/600x400?text=数字藏品')">
+          <span class="feature-badge">限量</span>
+        </div>
+        <div class="feature-content">
+          <h2>数字藏品</h2>
+          <p>收藏限量版校史数字纪念章，包括校徽、嘉庚建筑、标志性科研成果等，支持区块链存证。</p>
+          <a href="#" class="feature-btn">查看藏品</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="ar-section">
+      <div class="ar-content">
+        <h2>AR校园寻踪</h2>
+        <p>使用手机扫描校园中的历史建筑和地标，即可在屏幕上看到叠加的历史影像和故事讲解，体验穿越时空的校史之旅。</p>
+        
+        <div class="ar-steps">
+          <div class="ar-step">
+            <div class="ar-step-number">1</div>
+            <h3>打开应用</h3>
+            <p>扫描二维码或下载"厦大校史AR"应用</p>
+          </div>
+          
+          <div class="ar-step">
+            <div class="ar-step-number">2</div>
+            <h3>选择地点</h3>
+            <p>选择您所在的校园区域或建筑</p>
+          </div>
+          
+          <div class="ar-step">
+            <div class="ar-step-number">3</div>
+            <h3>扫描识别</h3>
+            <p>使用摄像头扫描建筑或地标</p>
+          </div>
+          
+          <div class="ar-step">
+            <div class="ar-step-number">4</div>
+            <h3>探索历史</h3>
+            <p>查看叠加的历史影像与故事讲解</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="ar-preview">
+        <div class="ar-placeholder">
+          <h3>AR效果预览</h3>
+          <p>在实际应用中，这里将展示AR扫描效果</p>
+          <p>历史影像将叠加在现实场景中</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="guide-section">
+      <div class="guide-header">
+        <h2>语音导览服务</h2>
+        <p>选择您喜欢的导览模式，聆听厦大百年故事</p>
+      </div>
+      
+      <div class="guide-options">
+        <button class="guide-option active">AI智能导览</button>
+        <button class="guide-option">专家真人导览</button>
+        <button class="guide-option">学生志愿者导览</button>
+      </div>
+      
+      <div class="guide-player">
+        <h3>群贤楼历史讲解</h3>
+        <p>群贤楼群是厦门大学最早建设的校舍，由陈嘉庚先生于1921年主持修建...</p>
+        <div class="player-controls">
+          <div class="player-btn">⏮</div>
+          <div class="player-btn">▶</div>
+          <div class="player-btn">⏭</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="nft-section">
+      <div class="nft-header">
+        <h2>校史数字藏品</h2>
+        <p>收藏限量版校史数字纪念章，永久保存厦大记忆</p>
+      </div>
+      
+      <div class="nft-grid">
+        <div class="nft-card">
+          <div class="nft-img" style="background-image: url('https://via.placeholder.com/300x300?text=校徽')"></div>
+          <div class="nft-content">
+            <h3>百年校徽纪念章</h3>
+            <p>厦门大学百年校庆特别版数字藏品</p>
+            <div class="nft-meta">
+              <span>限量: 1000份</span>
+              <span>编号: #001</span>
+            </div>
+            <a href="#" class="nft-btn">立即收藏</a>
+          </div>
+        </div>
+        
+        <div class="nft-card">
+          <div class="nft-img" style="background-image: url('https://via.placeholder.com/300x300?text=建南大会堂')"></div>
+          <div class="nft-content">
+            <h3>建南大会堂建筑</h3>
+            <p>嘉庚风格建筑代表数字藏品</p>
+            <div class="nft-meta">
+              <span>限量: 800份</span>
+              <span>编号: #002</span>
+            </div>
+            <a href="#" class="nft-btn">立即收藏</a>
+          </div>
+        </div>
+        
+        <div class="nft-card">
+          <div class="nft-img" style="background-image: url('https://via.placeholder.com/300x300?text=陈景润手稿')"></div>
+          <div class="nft-content">
+            <h3>陈景润手稿</h3>
+            <p>哥德巴赫猜想研究手稿数字藏品</p>
+            <div class="nft-meta">
+              <span>限量: 500份</span>
+              <span>编号: #003</span>
+            </div>
+            <a href="#" class="nft-btn">立即收藏</a>
+          </div>
+        </div>
+        
+        <div class="nft-card">
+          <div class="nft-img" style="background-image: url('https://via.placeholder.com/300x300?text=凤凰花开')"></div>
+          <div class="nft-content">
+            <h3>凤凰花开纪念章</h3>
+            <p>厦大毕业季主题数字藏品</p>
+            <div class="nft-meta">
+              <span>限量: 1200份</span>
+              <span>编号: #004</span>
+            </div>
+            <a href="#" class="nft-btn">立即收藏</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>关于我们</h3>
+        <p>厦门大学线上校史馆是展示厦大百年辉煌历史的数字平台，通过现代技术手段传承和弘扬厦大精神。</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>快速链接</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">首页</a></li>
+          <li><a href="virtual_exhibition.html">虚拟展厅</a></li>
+          <li><a href="timeline.html">时间轴叙事</a></li>
+          <li><a href="people_stories.html">人物与故事</a></li>
+          <li><a href="interactive.html">互动体验</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>联系我们</h3>
+        <p>地址：福建省厦门市思明区思明南路422号</p>
+        <p>厦大总值班电话：0592-2186110</p>
+        <p>邮箱：history@xmu.edu.cn</p>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>© 2025 厦门大学线上校史馆 版权所有</p>
+    </div>
+  </footer>
+
+  <script>
+    // 导览模式切换
+    document.querySelectorAll('.guide-option').forEach(option => {
+      option.addEventListener('click', function() {
+        document.querySelector('.guide-option.active').classList.remove('active');
+        this.classList.add('active');
+        alert(`切换到导览模式: ${this.textContent}\n在实际项目中，这里会加载对应的导览内容`);
+      });
+    });
+    
+    // 播放控制
+    document.querySelectorAll('.player-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        alert(`播放控制: ${this.textContent}\n在实际项目中，这里会控制音频播放`);
+      });
+    });
+    
+    // NFT收藏
+    document.querySelectorAll('.nft-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const nftName = this.closest('.nft-card').querySelector('h3').textContent;
+        alert(`收藏数字藏品: ${nftName}\n在实际项目中，这里会跳转到收藏页面`);
+      });
+    });
+  </script>
+</body>
+</html>
