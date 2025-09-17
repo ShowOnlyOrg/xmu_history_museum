@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>厦门大学校歌 - 播放学习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "微软雅黑", "思源宋体", serif;
+            line-height: 1.8;
+            background: #f5f7fa;
+            color: #2d3e50;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 51, 102, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #003366; /* 厦大校色 */
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .song-info {
+            border-bottom: 2px solid #eaeff5;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .song-info p {
+            color: #666;
+            font-size: 1.05rem;
+            margin: 8px 0;
+        }
+
+        .player-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        #anthem-player {
+            width: 100%;
+            max-width: 600px;
+            height: 60px;
+            filter: drop-shadow(0 2px 8px rgba(0, 51, 102, 0.15));
+        }
+
+        .lyrics-section {
+            margin-top: 40px;
+        }
+
+        .lyrics-section h2 {
+            color: #003366;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaeff5;
+        }
+
+        .lyrics {
+            background: #f9fbfd;
+            padding: 25px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            line-height: 2.2;
+            color: #3a4a5f;
+            white-space: pre-line;
+            min-height: 200px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c9a;
+            font-size: 0.95rem;
+            border-top: 1px solid #eaeff5;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .lyrics {
+                font-size: 1rem;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>厦门大学校歌</h1>
+            <p>XIAMEN UNIVERSITY ANTHEM</p>
+        </div>
+
+        <div class="content">
+            <div class="song-info">
+                <p>作词：郑贞文</p>
+                <p>作曲：赵元任</p>
+                <p>创作时间：1921年（厦门大学建校之年）</p>
+            </div>
+
+            <div class="player-container">
+                <!-- 音频播放器，路径指向music子目录 -->
+                <audio id="anthem-player" controls preload="metadata">
+                    <source src="resources/audios/xmu_school_song.mp3" type="audio/mp3">
+                    您的浏览器不支持HTML5音频播放，请升级浏览器。
+                </audio>
+            </div>
+
+            <div class="lyrics-section">
+                <h2>校歌歌词</h2>
+                <div class="lyrics">
+自强！自强！学海何洋洋！
+谁欤操钥发其藏？
+鹭江深且长，致吾知于无央。
+吁嗟乎，南方之强！吁嗟乎，南方之强！
+
+自强！自强！人生何茫茫！
+谁欤普渡驾慈航？
+鹭江深且长，充吾爱于无疆。
+吁嗟乎，南方之强！吁嗟乎，南方之强！
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>厦门大学校歌 | 传承百年精神 凝聚厦大力量</p>
+			<p>© 2025 厦门大学线上校史馆 版权所有</p>
+        </div>
+    </div>
+</body>
+</html>
