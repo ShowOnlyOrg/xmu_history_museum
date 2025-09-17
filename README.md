@@ -1,7 +1,69 @@
+# 厦门大学线上校史馆 (示范网站)
 
-## Xiamen University Online Campus History Museum  
+本项目为 **工程信息管理 第3小组** 课程作业配套成果，基于静态网页实现的 **厦门大学线上校史馆示范网站**。  
+旨在展示“线上校史馆”的可行性与初步构想，作为《厦门大学线上校史馆建设可行性分析报告》的演示部分。
 
-### Course Assignment for "Engineering Information Management" – Group 3  
+## 📖 项目背景
+- **学校介绍**：厦门大学建于1921年，是教育部直属的“双一流”“985/211”重点建设高校。百年办学历程中沉淀了深厚的历史文化与丰富的校史资源。  
+- **建设意义**：
+  1. 拓展文化传播边界，打破时间与空间限制，面向全球校友和公众传播厦大文化；
+  2. 激活百年校史资源的数字化价值，形成长期保存的数字资产库；
+  3. 创新教育模式，服务于思政教育、新生教育与校友文化认同；
+  4. 提升厦大品牌影响力，助力“双一流”建设。
 
-#### Group Members:  
-Chen Dong, Ding Hong, Guo Changxie, Huang Kunxin, Ke Shuiqian, Li Weijie, Liao Bohuai, Su Xiaojie, Wu Fangting, Zhang Chenhao  
+## 🛠️ 项目说明
+- **项目名称**：xmu_history_museum  
+- **类型**：静态网页 (HTML/CSS/JS)  
+- **功能**：  
+  - 网站首页 (`index.html`)  
+  - 模拟校史馆展厅与内容展示  
+  - 可拓展为多模块交互式数字校史馆  
+
+## 🌐 在线预览
+演示网站已部署在 GitHub Pages，可通过下面链接访问线上版本：
+
+👉 [https://showonlyorg.github.io/xmu_history_museum/](https://showonlyorg.github.io/xmu_history_museum/)
+
+## 📂 文件结构
+```
+xmu_history_museum/  
+├── index.html # 首页  
+├── css/ # 样式文件  
+├── js/ # 脚本文件  
+├── images/ # 图片资源  
+└── README.md # 项目说明  
+```
+## 🚀 部署与使用
+1. 克隆本仓库：
+   ```bash
+   git clone https://github.com/showonlyorg/xmu_history_museum.git
+   ```
+2. 本地打开 index.html 即可访问示范网站。
+
+3. 已通过 GitHub Pages 部署，可线上访问（见上方“在线预览”链接）。
+
+## 📑 相关文档
+《厦门大学线上校史馆建设可行性分析报告》  
+包括项目背景与建设意义、建设条件分析、技术方案设计、实施计划与资金筹措、风险评估与应对措施、结论与建议等内容。
+
+## 👥 团队成员
+工程信息管理 第3小组  
+陈东、丁弘、郭昌燮、黄坤欣、柯水潜、李伟杰、廖博怀、苏晓婕、吴芳婷、章辰豪
+
+##  🤝 Contribution / 改进建议
+我们欢迎对本项目提出意见和建议，未来可尝试的改进方向包括：
+
+- 增加 交互式时间轴，更直观地展示校史事件；
+
+- 引入 多媒体资源（视频/音频）以增强沉浸感；
+
+- 支持 移动端适配与响应式设计，方便手机访问；
+
+- 尝试集成 简单的搜索功能，提升资源查找效率；
+
+- 与 数据库/后台服务 对接，支持动态更新。
+
+如有建议，欢迎通过 issue 或 pull request 提交。
+
+## 📅 时间
+2025年9月
