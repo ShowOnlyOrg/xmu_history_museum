@@ -1,25 +1,30 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<!--version v1.0.2  -->
+<!--version v1.0.3  -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>厦门大学线上校史馆</title>
+  <title>首页 - 厦门大学线上校史馆</title>
   <style>
     :root {
       --xmured: #b81c22;
       --xmugray: #f5f5f5;
     }
+
+	/* 公共样式与各子页相同 */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Microsoft YaHei", sans-serif;
+      font-family: 'PingFang SC', "Microsoft YaHei", sans-serif;
     }
+
     body {
       background-color: #f9f9f9;
       color: #333;
+	   line-height: 1.6;
     }
+
     header {
       background: linear-gradient(135deg, #b81c22 0%, #8a0e13 100%);
       color: white;
@@ -29,18 +34,23 @@
       top: 0;
       z-index: 1000;
     }
+
     .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
       padding: 0 20px;
     }
+
+
     .logo {
       display: flex;
       align-items: center;
+      gap: 15px;
     }
+    
     .logo img {
       width: 50px;
       height: 50px;
@@ -48,11 +58,13 @@
       background: white;
       padding: 5px;
     }
+    
     .logo h1 {
       font-size: 1.8rem;
-      font-weight: bold;
-      margin: 0 0 0 15px;
+      font-weight: 600;
     }
+
+
     nav ul {
       display: flex;
       list-style: none;
@@ -69,6 +81,16 @@
     nav a:hover, nav a.active {
       background: rgba(255, 255, 255, 0.2);
     }
+
+         nav ul {
+          flex-wrap: wrap;
+        justify-content: center;
+      }
+     
+
+	
+
+
     .hero {
       height: 500px;
       background: url('https://via.placeholder.com/1920x500') center/cover no-repeat;
@@ -102,6 +124,9 @@
       font-size: 1.2rem;
       margin-bottom: 30px;
     }
+
+ 
+
     .btn {
       display: inline-block;
       background: var(--xmured);
@@ -160,59 +185,88 @@
       line-height: 1.6;
       margin-bottom: 20px;
     }
+
+
     footer {
-      background: #222;
+      background: #333;
       color: #ddd;
-      padding: 50px 20px 20px;
+      padding: 50px 0 20px;
+      margin-top: 60px;
     }
+    
     .footer-content {
       max-width: 1200px;
       margin: 0 auto;
+      padding: 0 20px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 40px;
     }
-    .footer-section h3 {
+
+
+
+.footer-section h3 {
       color: white;
       margin-bottom: 20px;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
+    
     .footer-section p {
-      line-height: 1.6;
       margin-bottom: 15px;
+      line-height: 1.8;
     }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: #b81c22;
+    }
+
+
     .social-links a {
       display: inline-block;
       margin-right: 15px;
       color: #ddd;
       font-size: 1.5rem;
     }
-    .copyright {
+
+
+
+  .copyright {
       text-align: center;
       padding-top: 30px;
       margin-top: 30px;
       border-top: 1px solid #444;
+      color: #999;
+      font-size: 0.9rem;
     }
+
     @media (max-width: 768px) {
       .header-content {
         flex-direction: column;
-        text-align: center;
+        gap: 15px;
       }
-      .logo {
-        margin-bottom: 15px;
-      }
-      nav ul {
-        justify-content: center;
-      }
-      nav li {
-        margin: 0 10px;
-      }
-      .hero h2 {
-        font-size: 2.2rem;
-      }
+
+
+
+
+
     }
   </style>
 </head>
+
 <body>
   <!-- 顶部导航栏  -->
   <header>
@@ -224,7 +278,7 @@
       
 	  <nav>
         <ul>
-          <li><a href="#" class="active">首页</a></li>
+          <li><a href="index.html" class="active">首页</a></li>
           <li><a href="virtual_exhibition.html">虚拟展厅</a></li>
           <li><a href="timeline.html">时间轴叙事</a></li>
           <li><a href="people_stories.html">人物与故事</a></li>
@@ -235,16 +289,19 @@
     </div>
   </header>
 
+
   <!-- 英雄区域（保持原有设计） -->
+ 
   <section class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h2>百年厦大 · 薪火相传</h2>
-      <h2>自强不息 · 止于至善</h2>
+      <h2>百年厦大 薪火相传</h2>
+      <h2>自强不息 止于至善</h2>
       <p>探索百年学府的历史足迹，感受嘉庚精神的永恒魅力</p>
       <a href="#features" class="btn">开始探索</a>
     </div>
   </section>
+ 
 
   <!-- 核心功能展示区（保持原有设计） -->
   <section class="features" id="features">
@@ -326,5 +383,7 @@
       <p>© 2025 厦门大学线上校史馆 版权所有</p>
     </div>
   </footer>
+
+
 </body>
 </html>
