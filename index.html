@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<!--version v1.0.5  -->
+<!--version v1.0.2_20250919  -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>首页 - 厦门大学线上校史馆</title>
@@ -125,7 +125,12 @@
       margin-bottom: 30px;
     }
 
- 
+   /* 4个字一组 同时换行*/
+   .hero-content-h2{
+      margin: 0;
+      word-break: keep-all; /* 关键 */
+    }
+
 
     .btn {
       display: inline-block;
@@ -258,11 +263,6 @@
         flex-direction: column;
         gap: 15px;
       }
-
-
-
-
-
     }
   </style>
 </head>
@@ -291,12 +291,11 @@
 
 
   <!-- 英雄区域（保持原有设计） -->
- 
   <section class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h2>百年厦大 薪火相传</h2>
-      <h2>自强不息 止于至善</h2>
+      <h2 class="hero-content-h2">百年厦大 薪火相传</h2>
+      <h2 class="hero-content-h2">自强不息 止于至善</h2>
       <p>探索百年学府的历史足迹，感受嘉庚精神的永恒魅力</p>
       <a href="#features" class="btn">开始探索</a>
     </div>
@@ -363,6 +362,7 @@
       </div>
       <div class="footer-section">
         <h3>快速链接</h3>
+		<p><a href="https://dag.xmu.edu.cn/" target="_blank" style="color: #ddd;">厦门大学档案馆 校史研究室</a></p>
         <p><a href="https://www.xmu.edu.cn/" target="_blank" style="color: #ddd;">厦门大学官网</a></p>
         <p><a href="https://alumni.xmu.edu.cn/index.htm" target="_blank" style="color: #ddd;">厦门大学校友总会</a></p>
         <p><a href="xmu_anthem.html" target="_blank" style="color: #ddd;">厦门大学校歌学习</a></p>
