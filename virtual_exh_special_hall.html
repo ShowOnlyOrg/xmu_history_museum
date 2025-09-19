@@ -368,34 +368,53 @@
     </div>
   </header>
 
-  <div class="container">
-    <div class="section-title">
-      <h1>虚拟展厅</h1>
-      <p>沉浸式体验厦门大学百年历史，探索珍贵校史文物与故事</p>
-    </div>
+<!--  -->
+<div class="container">
     
-    <div class="exhibition-container">
-      <div class="exhibition-preview">
-        <div class="exhibition-img" style="background-image: url('resources/pictures/ve_main_exh_hall.jpg')"></div>
-        <div class="exhibition-overlay">
-          <h2>主展厅：百年厦大</h2>
-          <p>1:1复刻实体校史馆场景，720°全景漫游体验，点击热点可查看文物详情</p>
-          <a href="https://wenbovr.xmu.edu.cn/1.html"  target="_blank" class="exhibition-btn">进入展厅</a>
-        </div>
+  <div class="exhibition-container">
+      <div class="featured-exhibitions">
+
+
+      <div class="featured-header">
+        <h2>精选专题展览</h2>
+        <p>聚焦厦大历史的重要主题，定期更新内容</p>
       </div>
       
-      <div class="exhibition-preview">
-        <div class="exhibition-img" style="background-image: url('resources/pictures/ve_subject_exh.png')"></div>
-        <div class="exhibition-overlay">
-          <h2>专题展厅</h2>
-          <p>精选主题展览，动态更新内容，深度探索厦大历史的不同维度</p>
-          <a href="virtual_exh_special_hall.html"  target="_blank" class="exhibition-btn">查看专题</a>
+      <div class="featured-grid">
+        <div class="featured-card">
+          <div class="featured-img" style="background-image: url('resources/pictures/ve_subj_cjg_xmu.jpg')"></div>
+          <div class="featured-content">
+            <h3>陈嘉庚与厦大创校</h3>
+            <p>展示校主陈嘉庚先生倾资办学的感人事迹，以及厦大创校初期的珍贵史料。</p>
+            <a href="#" class="featured-link">进入展览 →</a>
+          </div>
         </div>
+        
+        <div class="featured-card">
+          <div class="featured-img" style="background-image: url('resources/pictures/ve_subj_100years_develop.jpg')"></div>
+          <div class="featured-content">
+            <h3>百年学科发展</h3>
+            <p>追溯厦大各学科发展历程，展示重大科研成果与学科建设成就。</p>
+            <a href="#" class="featured-link">进入展览 →</a>
+          </div>
+        </div>
+        
+        <div class="featured-card">
+          <div class="featured-img" style="background-image: url('resources/pictures/ve_subj_anticovid_xmuers.jpeg')"></div>
+          <div class="featured-content">
+            <h3>抗疫中的厦大人</h3>
+            <p>记录厦大师生在重大公共卫生事件中的责任担当与感人事迹。</p>
+            <a href="#" class="featured-link">进入展览 →</a>
+          </div>
+        </div>
+
+<!--  -->
       </div>
     </div>
-  
-<!-- div  class "container" - --> 
+<!--  -->
   </div>
+
+
 
 
   <footer>
@@ -430,18 +449,19 @@
     </div>
   </footer>
 
-  <script>
 
+  <script>
     // VR控制按钮交互
-  /*
-	document.querySelectorAll('.vr-btn').forEach(btn => {
+	/*
+    document.querySelectorAll('.vr-btn').forEach(btn => {
       btn.addEventListener('click', function() {
         const action = this.textContent.trim();
         alert(`执行操作: ${action}\n在实际项目中，这里会执行相应的VR控制命令`);
       });
     });
-    */
+*/
 
+    
     // 进入展厅按钮
   /*
     document.querySelectorAll('.exhibition-btn').forEach(btn => {
@@ -452,8 +472,8 @@
       });
     });
   */
-
-
   </script>
+
+
 </body>
 </html>
